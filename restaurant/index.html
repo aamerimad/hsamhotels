@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>مطعم ومقهى اتش سام | H.SAM Restaurant & Café - الطائف</title>
-<meta name="description" content="مطعم ومقهى اتش سام داخل فندق اتش سام في الطائف: أطباق عالمية بلمسة شرقية، ستيك وبرجر وأطباق رئيسية فاخرة، وقهوة مختصة. احجز طاولتك عبر واتساب أو اتصل مباشرة.">
+<meta name="description" content="مطعم ومقهى اتش سام داخل فندق اتش سام في الطائف: عرض مشاوي لشخصين بـ149 ريال وبوفيه غداء الجمعة بـ189 ريال لشخصين. أطباق عالمية بلمسة شرقية، ستيك وبرجر وأطباق رئيسية فاخرة، وقهوة مختصة. احجز طاولتك عبر واتساب أو اتصل مباشرة.">
 <meta property="og:title" content="مطعم ومقهى اتش سام | الطائف">
 <meta property="og:description" content="مساء الطائف له طعم ثاني — احجز طاولتك عبر واتساب.">
 
@@ -68,6 +68,24 @@
   .hotel-link{display:block;margin-top:14px;color:var(--gold-2);font-size:14.5px;text-decoration:underline;text-underline-offset:4px}
   footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 96px}
 
+
+  /* Offers */
+  .offers{display:grid;gap:14px;margin-top:6px}
+  .offer{position:relative;background:var(--card);border:1px solid var(--gold);border-radius:var(--radius);padding:18px 16px 16px;scroll-margin-top:12px}
+  .offer .badge{position:absolute;top:-12px;inset-inline-start:16px;background:var(--gold);color:#1a1612;font-size:12.5px;font-weight:800;padding:3px 10px;border-radius:999px}
+  .offer h3{font-size:19px;font-weight:800;color:var(--text);margin-bottom:4px}
+  .price{display:flex;align-items:baseline;gap:10px;margin:6px 0 8px}
+  .price b{font-size:34px;font-weight:800;color:var(--gold-2);line-height:1}
+  .price span{color:var(--muted);font-size:14px}
+  .price s{color:var(--muted);font-size:15px}
+  .offer ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+  .offer li{font-size:13.5px;background:#222622;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--text)}
+  .offer .when{font-size:14px;color:var(--gold-2);margin-bottom:10px}
+  .offer .btn{min-height:52px;font-size:16px}
+  .offer .closed{display:none;font-size:14px;color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:10px;text-align:center}
+  .offer.is-closed .btn{display:none}
+  .offer.is-closed .closed{display:block}
+
   /* Sticky WhatsApp bar */
   .sticky{position:fixed;inset:auto 0 0 0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
     background:rgba(16,18,17,.92);backdrop-filter:blur(8px);border-top:1px solid var(--line);z-index:10}
@@ -97,12 +115,35 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
       اتصل للحجز 0594640494
     </a>
-    <span class="btn-note">نزيل عندنا أو مارّ من الطريق — طاولتك جاهزة</span>
+    <span class="btn-note">نزيل عندنا أو مارّ من الطريق — طاولتك جاهزة · <a href="#offers" style="color:var(--gold-2);text-decoration:underline">شوف عروضنا</a></span>
     <a class="btn" href="https://www.google.com/maps/search/?api=1&query=8CVW%2B6F%20Taif%20Saudi%20Arabia" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
       الاتجاهات إلى المطعم
     </a>
   </div>
+
+
+  <section id="offers">
+    <h2>عروضنا</h2>
+    <div class="offers">
+      <article class="offer" id="buffet">
+        <span class="badge">كل جمعة</span>
+        <h3>بوفيه غداء الجمعة</h3>
+        <div class="price"><b>189</b><span>ريال لشخصين</span></div>
+        <p class="when">الجمعة من 2:00 إلى 4:30 العصر · <span id="buffet-date"></span></p>
+        <ul><li>منسف أردني</li><li>لحوم مدخنة</li><li>أسماك</li><li>دجاج</li><li>سلطات</li><li>حلويات</li><li>عصائر طبيعية</li></ul>
+        <a class="btn btn-wa" href="https://wa.me/966594640494?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%A8%D9%88%D9%81%D9%8A%D9%87%20%D8%BA%D8%AF%D8%A7%D8%A1%20%D8%A7%D9%84%D8%AC%D9%85%D8%B9%D8%A9%20%D9%84%D8%B4%D8%AE%D8%B5%D9%8A%D9%86%20%D8%A8%D9%80189%20%D8%B1%D9%8A%D8%A7%D9%84%20%28%D9%85%D9%86%20%D8%A7%D9%84%D9%85%D9%88%D9%82%D8%B9%29" data-conv="AW-18360948386/5FwiCPGJsJUdEKKtl7NE">احجز بوفيه الجمعة عبر واتساب</a>
+        <p class="closed">حجز بوفيه الجمعة الجاية يفتح يوم الأربعاء — العدد محدود، احجز بدري.</p>
+      </article>
+      <article class="offer" id="offer149">
+        <span class="badge">وفّر 32 ريال</span>
+        <h3>عرض مشاوي متكاملة لشخصين</h3>
+        <div class="price"><b>149</b><span>ريال</span><s>181 ريال</s></div>
+        <ul><li>تشكيلة مشاوي: أوصال لحم، شيش طاووق، دجاج بالعظم</li><li>سلطة فتوش</li><li>رز أبيض مدخن</li><li>بطاطس مقلية</li><li>2 مشروب غازي</li><li>بيتزا أو باستا من اختيارك</li><li>مقبلات من اختيارك</li></ul>
+        <a class="btn btn-wa" href="https://wa.me/966594640494?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B9%D8%B1%D8%B6%20%D8%A7%D9%84%D9%85%D8%B4%D8%A7%D9%88%D9%8A%20%D9%84%D8%B4%D8%AE%D8%B5%D9%8A%D9%86%20%D8%A8%D9%80149%20%D8%B1%D9%8A%D8%A7%D9%84%20%28%D9%85%D9%86%20%D8%A7%D9%84%D9%85%D9%88%D9%82%D8%B9%29" data-conv="AW-18360948386/5FwiCPGJsJUdEKKtl7NE">اطلب عرض الـ149 عبر واتساب</a>
+      </article>
+    </div>
+  </section>
 
   <section id="menu">
     <h2>من قائمتنا</h2>
@@ -160,6 +201,22 @@
       setTimeout(go, 800);
     });
   });
+</script>
+
+<script>
+  // بوفيه الجمعة: الحجز مفتوح من الأربعاء لين الجمعة 4:30 العصر (توقيت الرياض)، ويتكرر كل أسبوع.
+  (function () {
+    var card = document.getElementById('buffet'); if (!card) return;
+    var now = new Date(Date.now() + 3 * 3600 * 1000);           // توقيت الرياض UTC+3
+    var day = now.getUTCDay(), mins = now.getUTCHours() * 60 + now.getUTCMinutes();
+    var open = day === 3 || day === 4 || (day === 5 && mins < 16 * 60 + 30);
+    var toFri = (5 - day + 7) % 7; if (day === 5 && !open) toFri = 7;
+    var fri = new Date(now.getTime() + toFri * 86400000);
+    var el = document.getElementById('buffet-date');
+    if (el) el.textContent = 'الجمعة ' + fri.getUTCDate() + '/' + (fri.getUTCMonth() + 1);
+    if (open) { var list = card.parentNode; list.insertBefore(card, list.firstChild); }
+    else { card.classList.add('is-closed'); var list2 = card.parentNode; list2.appendChild(card); }
+  })();
 </script>
 </body>
 </html>
